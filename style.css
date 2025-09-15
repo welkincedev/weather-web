@@ -1,0 +1,164 @@
+/* style.css — Minimal Dark Theme for Weather Web App */
+
+/* --- Variables --- */
+:root{
+  --bg: #0f1720;         /* page background */
+  --card: #0b1220;       /* card bg */
+  --muted: #98a0ab;      /* secondary text */
+  --text: #e6eef6;       /* main text */
+  --accent: #4fb6ff;     /* accent / buttons */
+  --accent-2: #6be5a8;   /* secondary accent */
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(2,6,23,0.6);
+  --glass-border: rgba(255,255,255,0.04);
+  --max-width: 420px;
+  font-size: 16px;
+}
+
+/* --- Global --- */
+* { box-sizing: border-box; }
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(75,135,255,0.06), transparent 8%),
+              radial-gradient(1000px 500px at 90% 90%, rgba(107,229,168,0.04), transparent 8%),
+              var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* --- Center container --- */
+.container{
+  width: min(92%, var(--max-width));
+  margin: 4vh auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Title */
+h1{
+  margin: 0 0 14px 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.2px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Input row */
+.controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:10px;
+}
+
+input[type="text"]{
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+  color:var(--text);
+  outline:none;
+  font-size:0.95rem;
+  transition: box-shadow .12s ease, transform .06s ease;
+}
+
+input[type="text"]::placeholder{ color: var(--muted); font-weight:500; }
+
+input[type="text"]:focus{
+  box-shadow: 0 6px 20px rgba(79,182,255,0.08);
+  transform: translateY(-1px);
+}
+
+/* Button */
+button{
+  background: linear-gradient(180deg, var(--accent), #1b8fe6);
+  color: white;
+  padding: 10px 14px;
+  font-weight:600;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow: 0 6px 18px rgba(75,182,255,0.12);
+  transition: transform .08s ease, box-shadow .12s ease, opacity .12s ease;
+  font-size:0.95rem;
+}
+
+button:hover{ transform: translateY(-2px); }
+button:active{ transform: translateY(0); box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+
+/* Weather box */
+.weather{
+  margin-top:20px;
+  padding:16px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+  border: 1px solid rgba(255,255,255,0.02);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.weather h2{
+  margin:0;
+  font-size:1.05rem;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+}
+
+.weather p{
+  margin:0;
+  color:var(--muted);
+  font-size:0.95rem;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+}
+
+/* small helper for bold left labels */
+.weather p b{ color:var(--text); font-weight:600; }
+
+/* Empty / warning states */
+.warning, .error{
+  margin-top:12px;
+  padding:10px;
+  border-radius:8px;
+  background: rgba(255,255,255,0.02);
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,0.02);
+  text-align:center;
+  font-size:0.95rem;
+}
+
+/* Responsive */
+@media (max-width:420px){
+  .container{ padding:18px; }
+  h1{ font-size:1rem; }
+  button{ padding:9px 12px; font-size:0.9rem; }
+  input[type="text"]{ font-size:0.9rem; }
+}
+
+/* Accessibility focus */
+button:focus, input:focus{
+  outline: 3px solid rgba(79,182,255,0.15);
+  outline-offset: 3px;
+}
+
+/* Optional: prefers-reduced-motion respect */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
