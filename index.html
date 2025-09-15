@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>🌤️ Weather App</h1>
-        <input type="text" id="city" placeholder="Enter city name">
-        <button onclick="getWeather()">Get Weather</button>
-        <div class="weather" id="weather"></div>
-    </div>
-    <script src="app.js"></script>
-</body>
-</html>
+---
+layout: default
+title: Weather App
+---
+
+<div class="container">
+  <h1>🌤️ Weather App</h1>
+  <div class="controls">
+    <input type="text" id="city" placeholder="Enter city, e.g. Chennai,IN">
+    <button onclick="getWeather()">Get Weather</button>
+  </div>
+  <div id="weather" class="weather"></div>
+</div>
+
+<!-- Load app.js -->
+<script src="{{ '/app.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
