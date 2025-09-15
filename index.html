@@ -10,6 +10,8 @@ title: Weather App
     <button onclick="getWeather()">Get Weather</button>
   </div>
   <div id="weather" class="weather"></div>
+<button id="shareBtn" style="display:none;" onclick="shareWeather()">📤 Share as Image</button>
+
 </div>
 
 <!-- Load app.js -->
@@ -17,4 +19,5 @@ title: Weather App
 <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 
