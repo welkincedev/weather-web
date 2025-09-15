@@ -1,22 +1,22 @@
-const API_KEY = "3597b64f37581e5dabd6fc08902ae36e"; // Replace with your OpenWeatherMap API key
+const API_KEY = "3597b64f37581e5dabd6fc08902ae36e"; // Replace with your real OpenWeatherMap API key
 
 async function getWeather() {
     const city = document.getElementById("city").value.trim();
     const weatherDiv = document.getElementById("weather");
 
     if (!city) {
-        weatherDiv.innerHTML = "⚠️ Please enter a city name!";
+        weatherDiv.innerHTML = "<div class='warning'>⚠️ Please enter a city name!</div>";
         return;
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
 
         if (data.cod != 200) {
-            weatherDiv.innerHTML = `❌ City not found!`;
+            weatherDiv.innerHTML = "<div class='error'>❌ City not found!</div>";
             return;
         }
 
@@ -48,8 +48,7 @@ async function getWeather() {
         `;
 
     } catch (err) {
-        weatherDiv.innerHTML = "⚠️ Error fetching data!";
+        weatherDiv.innerHTML = "<div class='error'>⚠️ Error fetching data!</div>";
         console.error(err);
     }
 }
-
