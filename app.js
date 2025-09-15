@@ -52,3 +52,32 @@ async function getWeather() {
         console.error(err);
     }
 }
+function showShareButton() {
+    document.getElementById("shareBtn").style.display = "block";
+}
+
+async function shareWeather() {
+    const weatherDiv = document.getElementById("weather");
+
+    html2canvas(weatherDiv).then(canvas => {
+        canvas.toBlob(blob => {
+            const file = new File([blob], "weather.png", { type: "image/png" });
+
+            if (navigator.share) {
+                // ✅ Mobile: Use Web Share API
+                navigator.share({
+                    title: "Weather Update",
+                    text: "Check the latest weather!",
+                    files: [file]
+                }).catch(err => console.error("Share failed:", err));
+            } else {
+                // ✅ Desktop: Download instead
+                const link = document.createElement("a");
+                link.download = "weather.png";
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+        });
+    });
+}
+
