@@ -10,18 +10,12 @@ Deployed using **GitHub Pages (Jekyll Slate theme)**.
 ## Setup
 1. Clone repo  
    ```bash
-   git clone https://github.com/YOUR_USERNAME/weather-web.git
+   git clone https://github.com/welkincedev/weather-web.git
 2. Add your API key in app.js:
 const API_KEY = "your_api_key_here";
 
-3.Push changes to GitHub.
 
-Deploy
+https://welkincedev.github.io/weather-web/
 
-Enable GitHub Pages in repo Settings → Pages → Branch: main → /(root)
-
-Your app will be live at:
-
-https://YOUR_USERNAME.github.io/weather-web/
 
 
